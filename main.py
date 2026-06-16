@@ -155,11 +155,31 @@ def classify_emails(emails):
 
     for email in emails:
         prompt = f"""
-You are an email triage assistant. Classify the following email into exactly one category:
+You are an email triage assistant for Keerthi, an IT professional actively job searching for AI engineering roles.
+Classify the following email into exactly one category:
 
-- IMPORTANT: Needs immediate attention or action (e.g. from boss, urgent deadlines, payments, personal contacts)
-- RELEVANT: Good to know but not urgent (e.g. newsletters you care about, work updates, notifications)
-- LOW_PRIORITY: Can be ignored or deleted (e.g. promotions, spam, mass emails)
+IMPORTANT — Flag these immediately:
+- Job alerts, job matches, recruiter emails, interview invitations, job application updates
+- Emails from real people (not automated systems)
+- Legal or immigration documents (DocuSign, I-983, OPT, USCIS, visa-related)
+- Payment confirmations, billing issues, bank alerts
+- Emails from universities, employers, or government agencies
+- Anything requiring action within 48 hours
+- Password resets or security alerts
+
+RELEVANT — Good to know but not urgent:
+- Professional newsletters about AI, tech, or career development
+- LinkedIn notifications about profile views or connections
+- Work-related updates or system notifications
+- Shipping or order confirmations
+
+LOW_PRIORITY — Safe to ignore:
+- Promotional emails from retail stores (Kohl's, SHEIN, Best Buy, etc.)
+- Restaurant or food delivery promotions (Domino's, etc.)
+- Entertainment recommendations (Netflix, Spotify, etc.)
+- Sports betting or gambling emails
+- Mass marketing emails
+- Car dealership or auto service promotions
 
 Email details:
 From: {email['sender']}
