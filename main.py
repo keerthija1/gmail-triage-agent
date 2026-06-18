@@ -39,6 +39,14 @@ app = Flask(__name__)
 def health():
     return "✅ Gmail Triage Agent is running!", 200
 
+@app.route("/run")
+def manual_run():
+    try:
+        run_agent()
+        return "✅ Triage complete! Check your email.", 200
+    except Exception as e:
+        return f"❌ Error: {str(e)}", 500
+
 # ============================================================
 # STEP 1: Connect to Gmail
 # ============================================================
